@@ -1,6 +1,7 @@
 package com.study.springstudy.core.chap03;
 
-import com.study.springstudy.core.chap03.config.AppConfig;
+//import com.study.springstudy.core.chap03.config.AppConfig;
+import com.study.springstudy.core.chap04.config.AppConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -10,10 +11,10 @@ class HotelDiTest {
 
     @Test
     void diTest() {
-        AppConfig config = new AppConfig();
-
-        Hotel hotel = config.hotel();
-        hotel.inform();
+//        AppConfig config = new AppConfig();
+//
+//        Hotel hotel = config.hotel();
+//        hotel.inform();
     }
 
     @Test
