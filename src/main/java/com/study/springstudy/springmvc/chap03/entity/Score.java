@@ -33,6 +33,7 @@ public class Score {
         else if(average >=80) this.grade = Grade.B;
         else if(average >=70) this.grade = Grade.C;
         else if(average >=60) this.grade = Grade.D;
+        else this.grade = Grade.F;
     }
 
     // 전달되는 dto에서 필요한 데이터를 Score의 필드에 할당하는 메서드
