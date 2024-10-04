@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib
 prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -82,26 +83,55 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
             <button id="go-home" type="button">홈화면으로</button>
           </label>
         </form>
+
         <hr />
 
-        <ul class="score-list">
-          <li class="list-header">
-            <div class="count">총 학생 수: ${sList.size()}명</div>
-            <div class="sort-link-group">
-              <div><a href="/score/list?sort=num">학번순</a></div>
-              <div><a href="/score/list?sort=name">이름순</a></div>
-              <div><a href="/score/list?sort=avg">평균순</a></div>
-            </div>
-          </li>
-          <c:forEach var="s" items="${sList}">
-            <li>
-              # 학번: ${s.stuNum}, 이름: <a href="#">${s.maskingName}</a>, 평균:
-              ${s.average}점, 학점: ${s.grade}
-              <a class="del-btn" href="#">삭제</a>
+        <form action="/score/remove" method="post" name="removeForm">
+          <ul class="score-list">
+            <li class="list-header">
+              <div class="count">총 학생 수: ${sList.size()}명</div>
+              <div class="sort-link-group">
+                <div><a href="/score/list?sort=num">학번순</a></div>
+                <div><a href="/score/list?sort=name">이름순</a></div>
+                <div><a href="/score/list?sort=avg">평균순</a></div>
+              </div>
             </li>
-          </c:forEach>
-        </ul>
+            <c:forEach var="s" items="${sList}">
+              <li>
+                # 학번: ${s.stuNum}, 이름:
+                <a href="/score/detail?stuNum=${s.stuNum}">${s.maskingName}</a>,
+                평균: ${s.average}점, 학점: ${s.grade}
+                <a class="del-btn" href="${s.stuNum}">삭제</a>
+              </li>
+            </c:forEach>
+            <input type="hidden" name="stuNum" id="stu-num" />
+          </ul>
+        </form>
       </section>
     </div>
+
+    <script>
+      // 삭제 버튼 클릭 이벤트 처리
+      const $ul = document.querySelector(".score-list");
+
+      $ul.addEventListener("click", (e) => {
+        // 삭제 버튼이 아니라면 이벤트 강제 종료
+        if (!e.target.matches(".del-btn")) return;
+
+        e.preventDefault(); // a 태그의 고유기능 중지.
+
+        if (confirm("정말로 삭제하시겠습니까?")) {
+          // a태그에 미리 세팅해 놓은 href에 작성된 학생 번호를 얻어오자.
+          const stuNum = e.target.getAttribute("href");
+
+          // hidden으로 숨겨진 input 태그의 value값으로 stuNum으로 넣어주자.
+          document.getElementById("stu-num").value = stuNum;
+
+          // 폼 태그 submit
+          // form태그는 name으로 바로 지목이 가능.
+          document.removeForm.submit();
+        }
+      });
+    </script>
   </body>
 </html>
