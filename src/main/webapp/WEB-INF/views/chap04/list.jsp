@@ -40,9 +40,9 @@
                 </form>
             </div>
             <div class="amount">
-                <div><a href="#">6</a></div>
-                <div><a href="#">18</a></div>
-                <div><a href="#">30</a></div>
+                <div><a href="/board/list?pageNo=1&amount=6">6</a></div>
+                <div><a href="/board/list?pageNo=1&amount=18">18</a></div>
+                <div><a href="/board/list?pageNo=1&amount=30">30</a></div>
             </div>
         </div>
         <!-- 메인 게시판 영역 -->
@@ -80,22 +80,25 @@
             <!-- 페이지 버튼 영역 -->
             <nav aria-label="Page navigation example">
                 <ul class="pagination pagination-lg pagination-custom">
-                        <li class="page-item"><a class="page-link"
-                                                 href="#">&lt;&lt;</a>
-                        </li>
-                        <li class="page-item"><a class="page-link"
-                                                 href="#">prev</a>
-                        </li>
-                        <li data-page-num="" class="page-item">
-                            <a class="page-link"
-                               href="#">${i}</a>
-                        </li>
-                        <li class="page-item"><a class="page-link"
-                                                 href="#">next</a>
-                        </li>
-                        <li class="page-item"><a class="page-link"
-                                                 href="#">&gt;&gt;</a>
-                        </li>
+                        <c:if test="${maker.prev}">
+                            <li class="page-item">
+                                <a class="page-link" href="/board/list?pageNo=${maker.begin-1}&amount=${maker.page.amount}">&lt;&lt;</a>
+                            </li>
+                        </c:if>
+
+                        <!-- step은 기본값이 1, 생략 가능 -->
+                        <c:forEach var="i" begin="${maker.begin}" end="${maker.end}">
+                            <li data-page-num="${i}" class="page-item">
+                                <a class="page-link" href="/board/list?pageNo=${i}&amount=${maker.page.amount}">${i}</a>
+                            </li>
+                        </c:forEach>
+
+
+                        <c:if test="${maker.next}">
+                            <li class="page-item">
+                                <a class="page-link" href="/board/list?pageNo=${maker.end + 1}&amount=${maker.page.amount}">&gt;&gt;</a>
+                            </li>
+                        </c:if>
                 </ul>
             </nav>
         </div>
@@ -166,7 +169,7 @@
             console.log('글 번호: ', bno);            
 
             // 서버에 요청 보내기
-            location.href='/board/detail/' + bno;
+            location.href='/board/detail/' + bno + '?pageNo=${maker.page.pageNo}&amount=${maker.page.amount}';
             
         })
 
@@ -204,6 +207,27 @@
       document.querySelector('.add-btn').onclick = e => {
         window.location.href = '/board/write';
       };
+
+
+      // 사용자가 현재 머물고 있는 페이지 버튼에 active 스타일 부여
+      function appendPageActive() {
+
+        // 현재 서버에서 넘겨준 페이지 번호
+        const currPage = '${maker.page.pageNo}';
+
+        // ul을 지목하고, ul의 자식 li들을 배열로 받기.
+        const $ul = document.querySelector('.pagination');
+        const $liList = [...$ul.children];
+
+        $liList.forEach($li => {
+            if (currPage === $li.dataset.pageNum) {
+                $li.classList.add('active');
+            }
+        });
+      }
+
+      appendPageActive();
+
     </script>
 
 
