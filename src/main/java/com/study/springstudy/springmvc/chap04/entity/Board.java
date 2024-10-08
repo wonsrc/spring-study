@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 
 public class Board {
 
