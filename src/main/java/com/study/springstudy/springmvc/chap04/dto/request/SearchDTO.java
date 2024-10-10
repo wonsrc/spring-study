@@ -1,4 +1,4 @@
-package com.study.springstudy.springmvc.chap04.dto;
+package com.study.springstudy.springmvc.chap04.dto.request;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +8,7 @@ import lombok.ToString;
 @Getter
 @ToString
 
-public class SearchDTO extends PageDTO{
+public class SearchDTO extends PageDTO {
     // 검색 조건, 검색어
     private String type, keyword;
 
