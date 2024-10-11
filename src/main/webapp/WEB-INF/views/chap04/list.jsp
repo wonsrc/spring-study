@@ -45,6 +45,9 @@
                 <div><a href="/board/list?pageNo=1&amount=30&type=${s.type}&keyword=${s.keyword}">30</a></div>
             </div>
         </div>
+
+        
+
         <!-- 메인 게시판 영역 -->
         <div class="card-container">
             <c:forEach var="b" items="${bList}">
@@ -53,7 +56,7 @@
                         <div class="card-title-wrapper">
                             <h2 class="card-title">
                                 ${b.shortTitle}
-                                <span>[{b.replyCount}]</span>
+                                <span>[${b.replyCount}]</span>
                             </h2>
                             <div class="time-view-wrapper">
                                 <div class="time">
@@ -238,8 +241,6 @@
             if ($opt.value === '${s.type}') {
                 // option 태그에 selected를 주면 그 option으로 고정됨.
                 $opt.setAttribute('selected', 'selected');
-
-                
             }
         });
       }
