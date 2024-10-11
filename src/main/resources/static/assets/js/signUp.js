@@ -1,6 +1,6 @@
 // 유효성 검증 관련 함수들 임포트
-// 디스트럭처링을 통해 특정 js파일에서 원하는 함수만 가져와서 쓸라고.
-import { validateInput } from "./validation";
+// 디스트럭처링을 통해 특정 js 파일에서 원하는 함수만 가져와서 쓸라고.
+import { validateInput } from "./validation.js";
 import { debounce } from "./util.js";
 
 // 폼과 회원가입 버튼 요소를 가져옴
@@ -10,7 +10,7 @@ const signupButton = document.getElementById("signup-btn"); // 회원가입 버�
 // 각 필드에 대한 정보 배열 (id, 유효성 검증 함수, 에러 메시지 표시 요소, 초기 유효 상태)
 const fields = [
   {
-    id: "user_id", // 진짜  input가 가지고 있는 id
+    id: "user_id", // 진짜 input가 가지고 있는 id
     validator: validateInput.account, // 유효하지 않으면 valid:false, message: 상황에 맞는 메세지
     errorElement: "idChk", // 입력값 유효성 검증에 문제 발생 시 메세지를 남길 span의 id
     valid: false, // 최종 검증 상태
@@ -48,8 +48,9 @@ const fields = [
 // 버튼 상태를 업데이트하는 함수
 const updateButtonState = () => {
   // 모든 valid가 true인지 확인
-  // every 배열 고차 함수 : 배열 내의 데이터를 순회하면서 특정 값이 모두 true인지를 확인.
+  // every 배열 고차 함수: 배열 내의 데이터를 순회하면서 특정 값이 모두 true인지를 확인.
   const isFormValid = fields.every((field) => field.valid);
+
   if (isFormValid) {
     // 모든 입력창이 다 true임.
     signupButton.disabled = false; // 버튼 비활성화를 풀어주자.
@@ -61,7 +62,7 @@ const updateButtonState = () => {
   }
 };
 
-// 각 필드에 대해 입력값 검증 이벤트 리스너를 추가(반복문)
+// 각 필드에 대해 입력값 검증 이벤트 리스너를 추가 (반복문)
 fields.forEach((field) => {
   const $input = document.getElementById(field.id); // 입력 요소 가져오기
 
@@ -70,7 +71,7 @@ fields.forEach((field) => {
     "keyup",
     debounce(async (e) => {
       // 키보드 입력 시마다 유효성 검증
-      // 0.5초 이내에 새로운 입력 들어오면 기존의 timeout 취소를 debouncerd로 제어.
+      // 0.5초 이내에 새로운 입력 들어오면 기존의 timeout 취소를 debounce로 제어.
       const isValid = await field.validator($input.value); // 유효성 검증 함수 호출
       const $errorSpan = document.getElementById(field.errorElement); // 에러 메시지 표시 요소 가져오기
       console.log(isValid);
