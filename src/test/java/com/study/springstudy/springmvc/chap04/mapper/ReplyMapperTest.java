@@ -1,8 +1,8 @@
 package com.study.springstudy.springmvc.chap04.mapper;
 
+import com.study.springstudy.springmvc.chap04.dto.request.PageDTO;
 import com.study.springstudy.springmvc.chap04.entity.Board;
 import com.study.springstudy.springmvc.chap04.entity.Reply;
-import org.apache.ibatis.annotations.Mapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -51,7 +51,7 @@ class ReplyMapperTest {
         int boardNo = 77;
 
         // when
-        List<Reply> replyList = replyMapper.findAll(boardNo);
+        List<Reply> replyList = replyMapper.findAll(boardNo, new PageDTO());
         replyList.forEach(System.out::println);
 
         // then
@@ -76,7 +76,7 @@ class ReplyMapperTest {
 
         // then
         assertNull(reply);
-        assertNotEquals(beforeDeleteCount ,replyMapper.findAll(boardNo).size());
+        assertNotEquals(beforeDeleteCount ,replyMapper.findAll(boardNo, new PageDTO()).size());
     }
 
     @Test
