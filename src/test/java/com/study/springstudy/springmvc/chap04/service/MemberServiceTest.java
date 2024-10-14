@@ -2,7 +2,6 @@ package com.study.springstudy.springmvc.chap04.service;
 
 import com.study.springstudy.springmvc.chap04.dto.request.LoginRequestDto;
 import com.study.springstudy.springmvc.chap04.dto.request.SignUpRequestDto;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +42,7 @@ class MemberServiceTest {
         LoginResult result = memberService.authenticate(LoginRequestDto.builder()
                 .account(account)
                 .password(password)
-                .build());
+                .build(), request.getSession(), response);
 
         // then
         assertEquals(LoginResult.NO_ACC, result);
@@ -60,7 +59,7 @@ class MemberServiceTest {
         LoginResult result = memberService.authenticate(LoginRequestDto.builder()
                 .account(account)
                 .password(password)
-                .build());
+                .build(), request.getSession(), response);
 
 
         // then
@@ -78,7 +77,7 @@ class MemberServiceTest {
         LoginResult result = memberService.authenticate(LoginRequestDto.builder()
                 .account(account)
                 .password(password)
-                .build());
+                .build(), request.getSession(), response);
 
         // then
         assertEquals(LoginResult.SUCCESS, result);
