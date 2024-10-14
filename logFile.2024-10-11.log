@@ -1,0 +1,24 @@
+[2024-10-11 17:25:11:629] INFO  19132 --- [           main] c.s.s.SpringstudyApplication             : Starting SpringstudyApplication using Java 17.0.12 with PID 19132 (C:\Users\playdata2\Desktop\develop\springstudy\build\classes\java\main started by playdata2 in C:\Users\playdata2\Desktop\develop\springstudy)
+[2024-10-11 17:25:11:630] DEBUG 19132 --- [           main] c.s.s.SpringstudyApplication             : Running with Spring Boot v3.2.10, Spring v6.1.13
+[2024-10-11 17:25:11:631] INFO  19132 --- [           main] c.s.s.SpringstudyApplication             : No active profile set, falling back to 1 default profile: "default"
+[2024-10-11 17:25:14:3320] INFO  19132 --- [           main] c.s.s.SpringstudyApplication             : Started SpringstudyApplication in 3.174 seconds (process running for 3.46)
+[2024-10-11 17:25:21:10258] INFO  19132 --- [nio-8181-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+[2024-10-11 17:25:21:10261] INFO  19132 --- [nio-8181-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+[2024-10-11 17:31:53:604] INFO  18208 --- [           main] c.s.s.SpringstudyApplication             : Starting SpringstudyApplication using Java 17.0.12 with PID 18208 (C:\Users\playdata2\Desktop\develop\springstudy\build\classes\java\main started by playdata2 in C:\Users\playdata2\Desktop\develop\springstudy)
+[2024-10-11 17:31:53:605] DEBUG 18208 --- [           main] c.s.s.SpringstudyApplication             : Running with Spring Boot v3.2.10, Spring v6.1.13
+[2024-10-11 17:31:53:606] INFO  18208 --- [           main] c.s.s.SpringstudyApplication             : No active profile set, falling back to 1 default profile: "default"
+[2024-10-11 17:31:56:3366] INFO  18208 --- [           main] c.s.s.SpringstudyApplication             : Started SpringstudyApplication in 3.231 seconds (process running for 3.498)
+[2024-10-11 17:35:21:656] INFO  7516 --- [           main] c.s.s.SpringstudyApplication             : Starting SpringstudyApplication using Java 17.0.12 with PID 7516 (C:\Users\playdata2\Desktop\develop\springstudy\build\classes\java\main started by playdata2 in C:\Users\playdata2\Desktop\develop\springstudy)
+[2024-10-11 17:35:21:656] DEBUG 7516 --- [           main] c.s.s.SpringstudyApplication             : Running with Spring Boot v3.2.10, Spring v6.1.13
+[2024-10-11 17:35:21:657] INFO  7516 --- [           main] c.s.s.SpringstudyApplication             : No active profile set, falling back to 1 default profile: "default"
+[2024-10-11 17:35:24:3465] INFO  7516 --- [           main] c.s.s.SpringstudyApplication             : Started SpringstudyApplication in 3.283 seconds (process running for 3.604)
+[2024-10-11 17:36:10:624] INFO  13816 --- [           main] c.s.s.SpringstudyApplication             : Starting SpringstudyApplication using Java 17.0.12 with PID 13816 (C:\Users\playdata2\Desktop\develop\springstudy\build\classes\java\main started by playdata2 in C:\Users\playdata2\Desktop\develop\springstudy)
+[2024-10-11 17:36:10:625] DEBUG 13816 --- [           main] c.s.s.SpringstudyApplication             : Running with Spring Boot v3.2.10, Spring v6.1.13
+[2024-10-11 17:36:10:625] INFO  13816 --- [           main] c.s.s.SpringstudyApplication             : No active profile set, falling back to 1 default profile: "default"
+[2024-10-11 17:36:13:3267] INFO  13816 --- [           main] c.s.s.SpringstudyApplication             : Started SpringstudyApplication in 3.119 seconds (process running for 3.402)
+[2024-10-11 17:37:04:621] INFO  1776 --- [           main] c.s.s.SpringstudyApplication             : Starting SpringstudyApplication using Java 17.0.12 with PID 1776 (C:\Users\playdata2\Desktop\develop\springstudy\build\classes\java\main started by playdata2 in C:\Users\playdata2\Desktop\develop\springstudy)
+[2024-10-11 17:37:04:621] DEBUG 1776 --- [           main] c.s.s.SpringstudyApplication             : Running with Spring Boot v3.2.10, Spring v6.1.13
+[2024-10-11 17:37:04:622] INFO  1776 --- [           main] c.s.s.SpringstudyApplication             : No active profile set, falling back to 1 default profile: "default"
+[2024-10-11 17:37:06:3363] INFO  1776 --- [           main] c.s.s.SpringstudyApplication             : Started SpringstudyApplication in 3.2 seconds (process running for 3.516)
+[2024-10-11 17:38:43:99818] INFO  1776 --- [nio-8181-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+[2024-10-11 17:38:43:99819] INFO  1776 --- [nio-8181-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms

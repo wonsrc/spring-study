@@ -1,6 +1,5 @@
 package com.study.springstudy.springmvc.interceptor;
 
-import com.study.springstudy.springmvc.chap04.entity.Board;
 import com.study.springstudy.springmvc.chap04.mapper.BoardMapper;
 import com.study.springstudy.springmvc.util.LoginUtils;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,12 +15,12 @@ import java.io.PrintWriter;
 
 import static com.study.springstudy.springmvc.util.LoginUtils.*;
 
-@RequiredArgsConstructor
 @Configuration
+@RequiredArgsConstructor
 @Slf4j
 public class BoardInterceptor implements HandlerInterceptor {
 
-    // 여기 인터셉터에서 Board쪽 DB조회가 필요해서 주입을 좀 받겠다.
+    // 여기 인터셉터에서 Board쪽 DB 조회가 필요해서 주입을 좀 받겠다.
     private final BoardMapper boardMapper;
 
     // 컨트롤러로 요청이 들어가기 전에 실행할 내용.
@@ -35,19 +34,18 @@ public class BoardInterceptor implements HandlerInterceptor {
             System.out.println("권한 없음! 요청 거부!");
             response.sendRedirect("/members/sign-in");
             return false;
-
         }
 
         // 삭제 요청이 들어올 때 서버에서 다시 한 번 내가 쓴 글인지를 체크
 
         // 현재 요청이 삭제 요청인지 확인
         String uri = request.getRequestURI();
-        if (uri.contains("delete")) {
+        if (uri.contains("delete") || uri.contains("modify")) {
 
-            //  관리자라면? -> 삭제 통과
+            // 관리자라면? -> 삭제 통과
             if (isAdmin(session)) return true;
 
-            //  삭제 요청이 들어온 글 번호를 확인 -> DB에서 조회 -> 작성자와 로그인 회원의 계정명 비교
+            // 삭제 요청이 들어온 글 번호를 확인 -> DB에서 조회 -> 작성자와 로그인 회원의 계정명 비교
             String boardNo = request.getParameter("boardNo");
             String writer
                     = boardMapper.findOne(Integer.parseInt(boardNo)).getWriter();
@@ -66,11 +64,11 @@ public class BoardInterceptor implements HandlerInterceptor {
             }
 
         }
+
         return true;
     }
 
-    // 컨트롤로러 요청이 들어간후 공통적으로 처리할 코드나 검사할 일들을 실행할 내용.
-
+    // 컨트롤러로 요청이 들어간 후 공통적으로 처리할 코드나 검사할 일들을 실행할 내용.
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 
