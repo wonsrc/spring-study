@@ -13,5 +13,6 @@ public class LoginUserResponseDTO {
     private String account;
     private String name;
     private String email;
+    private String auth;
 
 }
