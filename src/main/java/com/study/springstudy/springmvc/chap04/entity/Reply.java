@@ -20,7 +20,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Getter
-@Setter // 보통 entity는 setter를 필요한 필드에만 직접 구현한는 편입니다.
+//@Setter // 보통 entity는 setter를 필요한 필드에만 직접 구현한는 편입니다.
 @ToString
 @EqualsAndHashCode
 @AllArgsConstructor
@@ -29,8 +29,13 @@ import java.time.LocalDateTime;
 
 public class Reply {
     private int replyNo;
+    @Setter
     private String replyText;
+    @Setter
     private String replyWriter;
     private LocalDateTime replyDate;
     private int boardNo;
+
+    @Setter
+    private String account;
 }

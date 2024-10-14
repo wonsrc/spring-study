@@ -5,6 +5,7 @@ import com.study.springstudy.springmvc.chap04.dto.request.ReplyPostRequestDTO;
 import com.study.springstudy.springmvc.chap04.dto.response.ReplyDetailResponseDTO;
 import com.study.springstudy.springmvc.chap04.dto.response.ReplyListResponseDTO;
 import com.study.springstudy.springmvc.chap04.service.ReplyService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -20,7 +21,8 @@ public class ReplyApiController {
 
     @PostMapping
     public ResponseEntity<?> create(@Validated @RequestBody ReplyPostRequestDTO dto,
-                                    BindingResult result) { // 검증 결과 메세지를 가진 객체.
+                                    BindingResult result,// 검증 결과 메세지를 가진 객체.
+                                    HttpSession session) {// account도 얻어와야 함.
 
         if (result.hasErrors()) {
             // 입력값 검증에 걸리면 400번 status와 함께 메세지를 클라이언트로 전송.
@@ -32,7 +34,7 @@ public class ReplyApiController {
         System.out.println("/api/v1/replies: POST");
         System.out.println("dto = " + dto);
 
-        replyService.register(dto);
+        replyService.register(dto, session);
         return ResponseEntity.ok().body("success");
     }
 
